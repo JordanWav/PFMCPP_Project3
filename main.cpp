@@ -36,51 +36,52 @@ Sub Object 1: Steering Wheel
     Name 4 things you'll find on the:    Steering Wheel
         1) paddle shifters
         2) 'cruise control' controls
-        3) 
-        4) 
+        3) car horn
+        4) volume control
     Name 2 things you can do with the:   Steering Wheel
         1) adjust cruise control settings.
-        2)
+        2) honk horn
         
 Sub Object 2: Instrument Cluster
     Name 4 things you'll find on the:   Instrument Cluster
-        1)
-        2)
-        3)
-        4)
+        1) speedometer
+        2) fuel gauge
+        3) tachometer
+        4) odometer
     Name 3 things you can do with the:   Instrument Cluster
-        1)
-        2)
-        3)
+        1) check speed
+        2) check amount of fuel
+        3) check distance traveled
     
 Sub Object 3: Environment Controls
     Name 3 things you'll find on the:    Environment Controls
-        1)
-        2)
-        3)
+        1) temperature controls
+        2) A/C
+        3) heated seats
     Name 3 things you can do with the:   Environment Controls
-        1)
-        2)
-        3)
+        1) increase or lower temperature
+        2) turn on or off A/C
+        3) turn on or off heated seats
 
 Sub Object 4: Infotainment System
     Name 3 things you'll find on the:    Infotainment System
-        1)
-        2)
-        3)
+        1) GPS
+        2) music
+        3) apps
     Name 3 things you can do with the:   Infotainment System
-        1)
-        2)
-        3)
+        1) set new location for GPS
+        2) start a music playlist
+        3) open an app
 
 Sub Object 5: Seat 
     Name 3 things you'll find on the:    Seat
-        1)
-        2)
-        3)
+        1) seatbelt
+        2) seat adjuster
+        3) seat recliner
     Name 2 things you can do with the:   Seat
-        1)
-        2)
+        1) fasten seatbelt
+        2) recline seat
+
 */
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
@@ -99,5 +100,6 @@ Sub Object 5: Seat
 #include <iostream>
 int main()
 {
+      
     std::cout << "good to go!" << std::endl;
 }

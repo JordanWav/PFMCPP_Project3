@@ -234,7 +234,7 @@ Thing 1) House
     void openFrontDoor(std::string door = "front door");
     // close window
     bool closeWindow(House::Kitchen myKitchen);
- };
+};
 
 /*
 Thing 2) Xbox
@@ -357,7 +357,7 @@ Thing 4) Computer Monitor
     std::string changeProfiles(ComputerMonitor myMonitor);
     // switch to HDMI input
     bool toHDMIInput(ComputerMonitor myMonitor);
- };
+};
 
 /*
  Thing 5) workbench
@@ -373,8 +373,8 @@ Thing 4) Computer Monitor
     3) put away tools
  */
 
- struct Workbench
- {    
+struct Workbench
+{    
     // number of tools (int)
     int numTools = 15;
     // name of tool brand (std::string)
@@ -392,7 +392,7 @@ Thing 4) Computer Monitor
     bool repairItem(Workbench myWorkbench);
     // put away tools
     int putAwayTools(Workbench myWorkbench);
- };
+};
 
 /*
 Thing 6) exercise equipment
@@ -445,8 +445,8 @@ Thing 7) storage containers
     3) fill a box
  */
 
- struct StorageContainers
- {
+struct StorageContainers
+{
     // number of boxes (int)
     int numBoxes = 10;
     // weight of selected box (float)
@@ -464,7 +464,7 @@ Thing 7) storage containers
     std::string pickUpBox(StorageContainers boxD);
     // fill a box
     int fillBox(StorageContainers emptyBoxA);
- };
+};
 
 /*
 Thing 8) cars
@@ -515,8 +515,8 @@ Thing 9) shelves
     3) grab an item off the shelf
  */
 
- struct Shelves
- {
+struct Shelves
+{
     // name of object (std::string)
     std::string objectName = "shovel";
     // category of object (char)
@@ -534,7 +534,7 @@ Thing 9) shelves
     void sortShelfItems(std::string item, int numItems, bool alphabetical = true);
     // grab an item off the shelf
     std::string grabItem(Shelves shelfB);
- };
+};
 
 
  /*

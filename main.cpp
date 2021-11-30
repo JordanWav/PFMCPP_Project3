@@ -65,30 +65,13 @@ Part1 will be broken up into 5 separate steps
 */
 
 /*
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-
-
-
-/*
 Thing 1) House
 5 properties:
-    1) number of rooms
-    2) number of windows
-    3) name of owner(s)
-    4) number of doors
-    5) number of beds
+    1) number of rooms (int)
+    2) number of windows (int)
+    3) name of owner(s) (std::string)
+    4) number of doors (int)
+    5) number of beds (int)
 3 things it can do:
     1) furnish house
     2) open front door
@@ -98,11 +81,11 @@ Thing 1) House
 /*
 Thing 2) Xbox
 5 properties:
-    1) amount of space
-    2) number of games downloaded
-    3) number of controllers
-    4) name of profile
-    5) number of friends online
+    1) amount of space (float)
+    2) number of games downloaded (int)
+    3) number of controllers (int)
+    4) name of profile (std::string)
+    5) number of friends online (int)
 3 things it can do:
     1) open game
     2) download game
@@ -112,11 +95,11 @@ Thing 2) Xbox
 /*
 Thing 3) Logic Pro
 5 properties:
-    1) project sample rate
-    2) name of input device
-    3) name of project
-    4) number of tracks
-    5) tempo
+    1) project sample rate (float)
+    2) name of input device (std::string)
+    3) name of project (std::string)
+    4) number of tracks (int)
+    5) tempo (double)
 3 things it can do:
     1) create a new instrument track
     2) insert plugin
@@ -126,16 +109,30 @@ Thing 3) Logic Pro
 /*
 Thing 4) Computer Monitor
 5 properties:
-    1) number of default modes
-    2) brightness value
-    3) speaker volume
-    4) number of possible inputs
-    5) number of user profiles
+    1) number of default modes (int)
+    2) brightness value (int)
+    3) speaker volume (int)
+    4) number of possible inputs (int)
+    5) number of user profiles (int)
 
 3 things it can do:
     1) increase monitor brightness
     2) change profiles
     3) switch to HDMI input
+ */
+
+ /*
+Thing 10) Garage
+5 properties:
+    1) workbench
+    2) exercise equipment
+    3) storage containers
+    4) cars
+    5) shelves
+3 things it can do:
+    1) open garage door
+    2) use workbench
+    3) park car in garage
  */
 
 

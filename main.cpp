@@ -199,6 +199,43 @@ Thing 1) House
     2) open front door
     3) close window
  */
+ struct House 
+ {
+    // number of rooms (int)
+    int numRooms = 6;
+    // number of windows (int)
+    int numWindows = 12;
+    // name of owner(s) (std::string)
+    std::string ownerName = "James";
+    // number of doors (int)
+    int numDoors = 6;
+    // number of beds (int)
+    int numBeds = 2;
+
+    struct Kitchen 
+    {
+        // number of knives in kitchen (int)
+        int numKnives = 5;
+        // number of plates in kitchen (int)
+        int numPlates = 8;
+        // name of toaster brand (std::string)
+        std::string toasterBrand = "GE";
+        // number of doors on fridge (int)
+        int numFridgeDoors = 1;
+        // number of shelves in kitchen (int)
+        int numShelves = 4;
+
+        void microwaveChicken(float microwaveTime = 60.f);  
+        bool madeSalad(std::string lettuceBrand, bool includeTomatoes = true, std::string dressing = "Italian");
+        int preheatOven(float ovenTemperature);
+    };
+ };
+// furnish house
+bool furnishHouse(House myHouse);
+// open front door
+void openFrontDoor(std::string door = "front door");
+// close window
+bool closeWindow(House::Kitchen myKitchen);
 
 /*
 Thing 2) Xbox
@@ -214,6 +251,45 @@ Thing 2) Xbox
     3) turn on Xbox
  */
 
+struct Xbox
+{
+    // amount of space (float)
+    float amountOfSpace = 500.f;
+    // number of games downloaded (int)
+    int numGamesDownloaded = 10;
+    // number of controllers (int)
+    int numControllers = 1;
+    // name of profile (std::string)
+    std::string profileName = "Profile1";
+    // number of friends online (int)
+    int numFriendsOnline = 8;
+
+    struct Game
+    {
+        // size of game (float)
+        float sizeOfGame = 55.5f;
+        // category of game (std::string)
+        std::string gameCategory = "RPG";
+        // rating of game (char)
+        char gameRating = 'M';
+        // hours of game played (float)
+        float timePlayed = 15.2f;
+        // number of achievements completed (int)
+        int numCompletedAchievements = 5;
+
+        bool openGame(std::string gameName);
+        bool completeAchievement(std::string achievementName, int numPoints = 5);
+        void changeMenu(char buttonPressed = 'b', std::string currentMenu = "Main menu");
+    };
+};
+
+// open game
+bool openGame(Xbox::Game skyrim);
+// download game
+bool downloadGame(Xbox::Game haloInfinite);
+// turn on Xbox
+void turnOnXbox(Xbox myXbox);
+
 /*
 Thing 3) Logic Pro
 5 properties:
@@ -227,6 +303,27 @@ Thing 3) Logic Pro
     2) insert plugin
     3) record performance
  */
+
+struct LogicPro
+{
+    // project sample rate (float)
+    float sampleRate = 48000.f;
+    // name of input device (std::string)
+    std::string nameOfInputDevice = "SSL 2+";
+    // name of project (std::string)
+    std::string nameOfProject = "my project";
+    // number of tracks (int)
+    int numTracks = 12;
+    // tempo (double)
+    double tempo = 99.9;
+};
+
+// create a new instrument track
+std::string createInstrumentTrack(LogicPro trackA);
+// insert plugin
+std::string insertPlugin(LogicPro trackA);
+// record performance
+int recordPerformance(LogicPro trackB);
 
 /*
 Thing 4) Computer Monitor
@@ -243,6 +340,27 @@ Thing 4) Computer Monitor
     3) switch to HDMI input
  */
 
+ struct ComputerMonitor
+ {    
+    // number of default modes (int)
+    int numDefaultModes = 8;
+    // brightness value (int)
+    int brightnessValue = 50;
+    // speaker volume (int)
+    int speakerVolume = 0;
+    // number of possible inputs (int)
+    int numPossibleInputs = 3;
+    // number of user profiles (int)
+    int numUserProfiles = 3;
+ };
+
+ // increase monitor brightness
+ int increaseBrightness(ComputerMonitor myMonitor);
+ // change profiles
+ std::string changeProfiles(ComputerMonitor myMonitor);
+ // switch to HDMI input
+ bool toHDMIInput(ComputerMonitor myMonitor);
+
 /*
  Thing 5) workbench
 5 properties:
@@ -256,6 +374,27 @@ Thing 4) Computer Monitor
     2) repair an item
     3) put away tools
  */
+
+ struct Workbench
+ {    
+    // number of tools (int)
+    int numTools = 15;
+    // name of tool brand (std::string)
+    std::string toolBrand = "craftsman";
+    // height of workbench (float)
+    float workbenchHeight = 36;
+    // weight of hammer (float)
+    float hammerWeight = 1.5f;
+    // number of broken tools (int)
+    int numBrokenTools = 0;     
+ };
+
+// open toolbox
+bool openToolbox(Workbench myWorkbench);
+// repair an item
+bool repairItem(Workbench myWorkbench);
+// put away tools
+int putAwayTools(Workbench myWorkbench);
 
 /*
 Thing 6) exercise equipment
@@ -271,6 +410,27 @@ Thing 6) exercise equipment
     3) move equipment
  */
 
+struct ExerciseEquipment
+{
+    // weight of dumbbell (float)
+    float dumbbellWeight = 12.f;
+    // number of dumbbells (int)
+    int numDumbbells = 4;
+    // value of equipment (float, dollars)
+    float equipmentValue = 200.35f;
+    // type of workout (std::string)
+    std::string workoutType = "endurance";
+    // type of equipment (std::string)
+    std::string equipmentType = "benchpress";
+};
+
+// lift dumbbells
+int liftDumbbell(ExerciseEquipment dumbbell);
+// add weight to benchpress
+float addWeight(ExerciseEquipment benchpress);
+// move equipment
+bool moveEquipment(ExerciseEquipment equipment);
+
 /*
 Thing 7) storage containers
 5 properties:
@@ -284,6 +444,27 @@ Thing 7) storage containers
     2) pick up a box
     3) fill a box
  */
+
+ struct StorageContainers
+ {
+    // number of boxes (int)
+    int numBoxes = 10;
+    // weight of selected box (float)
+    float weightOfBox = 12.5f;
+    // category of box (std::string)
+    std::string boxCategory = "books";
+    // label on box (char)
+    char boxLabel = 'b';
+    // weight of all boxes (float)
+    float allBoxesWeight = 115.23f;
+ };
+
+ // label a box
+ char labelBox(StorageContainers boxA);
+ // pick up a box
+ std::string pickUpBox(StorageContainers boxD);
+ // fill a box
+ int fillBox(StorageContainers emptyBoxA);
 
 /*
 Thing 8) cars
@@ -299,6 +480,27 @@ Thing 8) cars
     3) drive car
  */
 
+struct Cars
+{
+    // car type (std::string, electric or gas)
+    std::string carType = "gas";
+    // car brand (std::string)
+    std::string carBrand = "Ford";
+    // number of wheels (int)
+    int numWheels = 4;
+    // number of doors
+    int numDoors = 4;
+    // owner of car (std::string, name)
+    std::string ownerOfCar = "Jason";
+};
+
+// open car door
+void openCarDoor(Cars carA);
+// park car
+bool parkCar(Cars carB);
+// drive car
+bool driveCar(Cars carA);
+
 /*
 Thing 9) shelves
 5 properties: 
@@ -312,6 +514,27 @@ Thing 9) shelves
     2) sort items on shelf
     3) grab an item off the shelf
  */
+
+ struct Shelves
+ {
+    // name of object (std::string)
+    std::string objectName = "shovel";
+    // category of object (char)
+    char objectCategory = 'w';
+    // number of shelves (int)
+    int numShelves = 8;
+    // number of items on a specific shelf (int)
+    int numItemsOnShelf = 5;
+    // weight of items on a specific shelf (float)
+    float weightOfItemsOnShelf = 15.5f;
+ };
+
+ // store object on shelf
+ bool storeObjectOnShelf(Shelves shelfA);
+ // sort items on shelf
+ void sortShelfItems(std::string item, int numItems, bool alphabetical = true);
+ // grab an item off the shelf
+ std::string grabItem(Shelves shelfB);
 
  /*
 Thing 10) Garage
@@ -327,7 +550,18 @@ Thing 10) Garage
     3) park car in garage
  */
 
+struct Garage 
+{
+    Workbench workbench;
+    ExerciseEquipment equipment;
+    StorageContainers container;
+    Cars car;
+    Shelves shelf;
+};
 
+bool openGarageDoor(Garage myGarage);
+void useWorkbench(Workbench myWorkbench);
+bool parkCarInGarage(Cars myCar);
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH

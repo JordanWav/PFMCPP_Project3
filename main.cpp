@@ -185,7 +185,6 @@ struct CarWash //                                   1) define an empty struct fo
     */
 };
 
-
 /*
 Thing 1) House
 5 properties:
@@ -229,13 +228,13 @@ Thing 1) House
         bool madeSalad(std::string lettuceBrand, bool includeTomatoes = true, std::string dressing = "Italian");
         int preheatOven(float ovenTemperature);
     };
+    // furnish house
+    bool furnishHouse(House myHouse);
+    // open front door
+    void openFrontDoor(std::string door = "front door");
+    // close window
+    bool closeWindow(House::Kitchen myKitchen);
  };
-// furnish house
-bool furnishHouse(House myHouse);
-// open front door
-void openFrontDoor(std::string door = "front door");
-// close window
-bool closeWindow(House::Kitchen myKitchen);
 
 /*
 Thing 2) Xbox
@@ -281,14 +280,13 @@ struct Xbox
         bool completeAchievement(std::string achievementName, int numPoints = 5);
         void changeMenu(char buttonPressed = 'b', std::string currentMenu = "Main menu");
     };
+    // open game
+    bool openGame(Xbox::Game skyrim);
+    // download game
+    bool downloadGame(Xbox::Game haloInfinite);
+    // turn on Xbox
+    void turnOnXbox(Xbox myXbox);
 };
-
-// open game
-bool openGame(Xbox::Game skyrim);
-// download game
-bool downloadGame(Xbox::Game haloInfinite);
-// turn on Xbox
-void turnOnXbox(Xbox myXbox);
 
 /*
 Thing 3) Logic Pro
@@ -316,14 +314,14 @@ struct LogicPro
     int numTracks = 12;
     // tempo (double)
     double tempo = 99.9;
-};
 
-// create a new instrument track
-std::string createInstrumentTrack(LogicPro trackA);
-// insert plugin
-std::string insertPlugin(LogicPro trackA);
-// record performance
-int recordPerformance(LogicPro trackB);
+    // create a new instrument track
+    std::string createInstrumentTrack(LogicPro trackA);
+    // insert plugin
+    std::string insertPlugin(LogicPro trackA);
+    // record performance
+    int recordPerformance(LogicPro trackB);
+};
 
 /*
 Thing 4) Computer Monitor
@@ -352,14 +350,14 @@ Thing 4) Computer Monitor
     int numPossibleInputs = 3;
     // number of user profiles (int)
     int numUserProfiles = 3;
- };
 
- // increase monitor brightness
- int increaseBrightness(ComputerMonitor myMonitor);
- // change profiles
- std::string changeProfiles(ComputerMonitor myMonitor);
- // switch to HDMI input
- bool toHDMIInput(ComputerMonitor myMonitor);
+     // increase monitor brightness
+    int increaseBrightness(ComputerMonitor myMonitor);
+    // change profiles
+    std::string changeProfiles(ComputerMonitor myMonitor);
+    // switch to HDMI input
+    bool toHDMIInput(ComputerMonitor myMonitor);
+ };
 
 /*
  Thing 5) workbench
@@ -386,15 +384,15 @@ Thing 4) Computer Monitor
     // weight of hammer (float)
     float hammerWeight = 1.5f;
     // number of broken tools (int)
-    int numBrokenTools = 0;     
- };
+    int numBrokenTools = 0;    
 
-// open toolbox
-bool openToolbox(Workbench myWorkbench);
-// repair an item
-bool repairItem(Workbench myWorkbench);
-// put away tools
-int putAwayTools(Workbench myWorkbench);
+    // open toolbox
+    bool openToolbox(Workbench myWorkbench);
+    // repair an item
+    bool repairItem(Workbench myWorkbench);
+    // put away tools
+    int putAwayTools(Workbench myWorkbench);
+ };
 
 /*
 Thing 6) exercise equipment
@@ -422,14 +420,16 @@ struct ExerciseEquipment
     std::string workoutType = "endurance";
     // type of equipment (std::string)
     std::string equipmentType = "benchpress";
+
+    // lift dumbbells
+    int liftDumbbell(ExerciseEquipment dumbbell);
+    // add weight to benchpress
+    float addWeight(ExerciseEquipment benchpress);
+    // move equipment
+    bool moveEquipment(ExerciseEquipment equipment);
 };
 
-// lift dumbbells
-int liftDumbbell(ExerciseEquipment dumbbell);
-// add weight to benchpress
-float addWeight(ExerciseEquipment benchpress);
-// move equipment
-bool moveEquipment(ExerciseEquipment equipment);
+
 
 /*
 Thing 7) storage containers
@@ -457,14 +457,14 @@ Thing 7) storage containers
     char boxLabel = 'b';
     // weight of all boxes (float)
     float allBoxesWeight = 115.23f;
+    
+    // label a box
+    char labelBox(StorageContainers boxA);
+    // pick up a box
+    std::string pickUpBox(StorageContainers boxD);
+    // fill a box
+    int fillBox(StorageContainers emptyBoxA);
  };
-
- // label a box
- char labelBox(StorageContainers boxA);
- // pick up a box
- std::string pickUpBox(StorageContainers boxD);
- // fill a box
- int fillBox(StorageContainers emptyBoxA);
 
 /*
 Thing 8) cars
@@ -492,14 +492,14 @@ struct Cars
     int numDoors = 4;
     // owner of car (std::string, name)
     std::string ownerOfCar = "Jason";
-};
 
-// open car door
-void openCarDoor(Cars carA);
-// park car
-bool parkCar(Cars carB);
-// drive car
-bool driveCar(Cars carA);
+    // open car door
+    void openCarDoor(Cars carA);
+    // park car
+    bool parkCar(Cars carB);
+    // drive car
+    bool driveCar(Cars carA);
+};
 
 /*
 Thing 9) shelves
@@ -527,14 +527,15 @@ Thing 9) shelves
     int numItemsOnShelf = 5;
     // weight of items on a specific shelf (float)
     float weightOfItemsOnShelf = 15.5f;
+
+     // store object on shelf
+    bool storeObjectOnShelf(Shelves shelfA);
+    // sort items on shelf
+    void sortShelfItems(std::string item, int numItems, bool alphabetical = true);
+    // grab an item off the shelf
+    std::string grabItem(Shelves shelfB);
  };
 
- // store object on shelf
- bool storeObjectOnShelf(Shelves shelfA);
- // sort items on shelf
- void sortShelfItems(std::string item, int numItems, bool alphabetical = true);
- // grab an item off the shelf
- std::string grabItem(Shelves shelfB);
 
  /*
 Thing 10) Garage
@@ -557,11 +558,12 @@ struct Garage
     StorageContainers container;
     Cars car;
     Shelves shelf;
+
+    bool openGarageDoor(Garage myGarage);
+    void useWorkbench(Workbench myWorkbench);
+    bool parkCarInGarage(Cars myCar);
 };
 
-bool openGarageDoor(Garage myGarage);
-void useWorkbench(Workbench myWorkbench);
-bool parkCarInGarage(Cars myCar);
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH

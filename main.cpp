@@ -81,79 +81,6 @@ Part1 will be broken up into 5 separate steps
 */
 
 /*
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-
-
-
-/*
 Thing 1) House
 5 properties:
     1) number of rooms (int)
@@ -208,6 +135,76 @@ Thing 4) Computer Monitor
     1) increase monitor brightness
     2) change profiles
     3) switch to HDMI input
+ */
+
+/*
+ Thing 5) workbench
+5 properties:
+    1) number of tools (int)
+    2) name of tool brand (std::string)
+    3) height of workbench (float)
+    4) weight of hammer (float)
+    5) number of broken tools (int)
+3 things it can do:
+    1) open toolbox
+    2) repair an item
+    3) put away tools
+ */
+
+/*
+Thing 6) exercise equipment
+5 properties:
+    1) weight of dumbbell (float)
+    2) number of dumbbells (int)
+    3) value of equipment (float, dollars)
+    4) type of workout (std::string)
+    5) type of equipment (std::string)
+3 things it can do:
+    1) lift dumbbells
+    2) add weight to benchpress
+    3) move equipment
+ */
+
+/*
+Thing 7) storage containers
+5 properties:
+    1) number of boxes (int)
+    2) weight of selected box (float)
+    3) category of box (std::string)
+    4) label on box (char)
+    5) weight of all boxes (float)
+3 things it can do:
+    1) label a box
+    2) pick up a box
+    3) fill a box
+ */
+
+/*
+Thing 8) cars
+5 properties:
+    1) car type (std::string, electric or gas)
+    2) car brand (std::string)
+    3) number of wheels (int)
+    4) number of doors
+    5) owner of car (std::string, name)
+3 things it can do:
+    1) open car door
+    2) park car
+    3) drive car
+ */
+
+/*
+Thing 9) shelves
+5 properties: 
+    1) name of object (std::string)
+    2) category of object (char)
+    3) number of shelves (int)
+    4) number of items on a specific shelf (int)
+    5) weight of items on a specific shelf (float)
+3 things it can do:
+    1) store object on shelf
+    2) sort items on shelf
+    3) grab an item off the shelf
  */
 
  /*

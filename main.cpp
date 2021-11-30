@@ -57,59 +57,60 @@ Thing: Car Wash
  */
 
 /*
-Thing 1)
+Thing 1) House
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of rooms
+    2) number of windows
+    3) name of owner(s)
+    4) number of doors
+    5) number of beds
 3 things it can do:
-    1)
-    2)
-    3)
+    1) furnish house
+    2) open front door
+    3) close window
  */
 
 /*
-Thing 2)
+Thing 2) Xbox
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) amount of space
+    2) number of games downloaded
+    3) number of controllers
+    4) name of profile
+    5) number of friends online
 3 things it can do:
-    1)
-    2)
-    3)
+    1) open game
+    2) download game
+    3) turn on Xbox
  */
 
 /*
-Thing 3)
+Thing 3) Logic Pro
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) project sample rate
+    2) name of input device
+    3) name of project
+    4) number of tracks
+    5) tempo
 3 things it can do:
-    1)
-    2)
-    3)
+    1) create a new instrument track
+    2) insert plugin
+    3) record performance
  */
 
 /*
-Thing 4)
+Thing 4) Computer Monitor
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of default modes
+    2) brightness value
+    3) speaker volume
+    4) number of possible inputs
+    5) number of user profiles
+
 3 things it can do:
-    1)
-    2)
-    3)
+    1) increase monitor brightness
+    2) change profiles
+    3) switch to HDMI input
  */
 
 

@@ -108,6 +108,50 @@ struct CarWash
     You'll need to insert the Person struct from the video in the space below.
  */
 
+struct Person
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
+
+    void run( int howFast, bool startWithLeftFoot);
+
+    struct Foot
+    {
+        int stepSize()
+        {
+            int size = 5;
+            return size;
+        }
+        void stepForward()
+        {
+        
+        }
+    };
+
+    Foot leftFoot;
+    Foot rightFoot;
+};
+
+void Person::run( int howFast, bool startWithLeftFoot)
+{
+    howFast = 10;
+    
+    if( startWithLeftFoot == true )
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTraveled += leftFoot.stepSize() + rightFoot.stepSize();
+}
 
 
 
@@ -125,372 +169,431 @@ struct CarWash
  if your code produces a -Wpadded warning, add '-Wno-padded' to the .replit file with the other compiler flags (-Weverything -Wno-missing-prototypes etc etc)
  */
 
-
-/*
-Thing 1) House
-5 properties:
-    1) number of rooms (int)
-    2) number of windows (int)
-    3) name of owner(s) (std::string)
-    4) number of doors (int)
-    5) number of beds (int)
-3 things it can do:
-    1) furnish house
-    2) open front door
-    3) close window
- */
  struct House 
  {
-    // number of rooms (int)
     int numRooms = 6;
-    // number of windows (int)
     int numWindows = 12;
-    // name of owner(s) (std::string)
     std::string ownerName = "James";
-    // number of doors (int)
     int numDoors = 6;
-    // number of beds (int)
     int numBeds = 2;
 
     struct Kitchen 
     {
-        // number of knives in kitchen (int)
         int numKnives = 5;
-        // number of plates in kitchen (int)
         int numPlates = 8;
-        // name of toaster brand (std::string)
         std::string toasterBrand = "GE";
-        // number of doors on fridge (int)
         int numFridgeDoors = 1;
-        // number of shelves in kitchen (int)
         int numShelves = 4;
 
         void microwaveChicken(float microwaveTime = 60.f);  
         bool madeSalad(std::string lettuceBrand, bool includeTomatoes = true, std::string dressing = "Italian");
-        int preheatOven(float ovenTemperature);
+        float preheatOven(float ovenTemperature);
     };
-    // furnish house
     bool furnishHouse(House myHouse);
-    // open front door
     void openFrontDoor(std::string door = "front door");
-    // close window
     bool closeWindow(House::Kitchen myKitchen);
 };
 
-/*
-Thing 2) Xbox
-5 properties:
-    1) amount of space (float)
-    2) number of games downloaded (int)
-    3) number of controllers (int)
-    4) name of profile (std::string)
-    5) number of friends online (int)
-3 things it can do:
-    1) open game
-    2) download game
-    3) turn on Xbox
- */
+void House::Kitchen::microwaveChicken( float microwaveTime)
+{
+    float instructions = 45.f;
+    microwaveTime = instructions;    
+    
+    if( microwaveTime >= 45.f )
+    {
+        std::cout << "Ready!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Not Ready!" << std::endl;
+    }
+}
+
+bool House::Kitchen::madeSalad( std::string lettuceBrand, bool includeTomatoes, std::string dressing)
+{
+    lettuceBrand = "Good Lettuce";
+
+    if( includeTomatoes == true && dressing == "Italian" )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+float House::Kitchen::preheatOven(float ovenTemperature)
+{
+    ovenTemperature = 350.f;
+    if (ovenTemperature > 0.f)
+    {
+        return ovenTemperature;
+    }
+    else
+    {
+        return 0.f;
+    }
+}
+
+bool House::furnishHouse(House myHouse)
+{   
+    return myHouse.numBeds == 0;
+}
+
+void House::openFrontDoor(std::string door)
+{
+    if ( door == "front door" )
+    {
+        std::cout << "Need to open front door" << std::endl;
+    }
+    else
+    {
+        std::cout << "Not the front door" << std::endl;
+    }
+}
+
+bool House::closeWindow(House::Kitchen myKitchen)
+{
+    return myKitchen.numShelves > 1;
+}
 
 struct Xbox
 {
-    // amount of space (float)
     float amountOfSpace = 500.f;
-    // number of games downloaded (int)
     int numGamesDownloaded = 10;
-    // number of controllers (int)
     int numControllers = 1;
-    // name of profile (std::string)
     std::string profileName = "Profile1";
-    // number of friends online (int)
     int numFriendsOnline = 8;
 
     struct Game
     {
-        // size of game (float)
         float sizeOfGame = 55.5f;
-        // category of game (std::string)
         std::string gameCategory = "RPG";
-        // rating of game (char)
         char gameRating = 'M';
-        // hours of game played (float)
         float timePlayed = 15.2f;
-        // number of achievements completed (int)
         int numCompletedAchievements = 5;
 
         bool openGame(std::string gameName);
         bool completeAchievement(std::string achievementName, int numPoints = 5);
         void changeMenu(char buttonPressed = 'b', std::string currentMenu = "Main menu");
     };
-    // open game
     bool openGame(Xbox::Game skyrim);
-    // download game
     bool downloadGame(Xbox::Game haloInfinite);
-    // turn on Xbox
     void turnOnXbox(Xbox myXbox);
 };
 
-/*
-Thing 3) Logic Pro
-5 properties:
-    1) project sample rate (float)
-    2) name of input device (std::string)
-    3) name of project (std::string)
-    4) number of tracks (int)
-    5) tempo (double)
-3 things it can do:
-    1) create a new instrument track
-    2) insert plugin
-    3) record performance
- */
+
+bool Xbox::Game::openGame(std::string gameName)
+{
+    return gameName == "Valid";
+}
+
+bool Xbox::Game::completeAchievement(std::string achievementName, int numPoints)
+{
+    if ( achievementName == "Valid" )
+    {
+        numPoints += 5;
+        return true;
+    }
+    return false;
+}
+
+void Xbox::Game::changeMenu(char buttonPressed, std::string currentMenu)
+{
+    if ( buttonPressed == 'b' )
+    {
+        currentMenu = "Main menu";
+    }
+
+}
+
+bool Xbox::openGame(Xbox::Game skyrim)
+{
+    return skyrim.gameCategory == "RPG";
+}
+
+bool Xbox::downloadGame(Xbox::Game haloInfinite)
+{
+    return Xbox::amountOfSpace >= haloInfinite.sizeOfGame;
+}
+
+void Xbox::turnOnXbox(Xbox myXbox)
+{
+    myXbox.profileName = "My Profile";   
+}
+
 
 struct LogicPro
 {
-    // project sample rate (float)
     float sampleRate = 48000.f;
-    // name of input device (std::string)
     std::string nameOfInputDevice = "SSL 2+";
-    // name of project (std::string)
     std::string nameOfProject = "my project";
-    // number of tracks (int)
     int numTracks = 12;
-    // tempo (double)
     double tempo = 99.9;
 
-    // create a new instrument track
     std::string createInstrumentTrack(LogicPro trackA);
-    // insert plugin
     std::string insertPlugin(LogicPro trackA);
-    // record performance
     int recordPerformance(LogicPro trackB);
 };
 
-/*
-Thing 4) Computer Monitor
-5 properties:
-    1) number of default modes (int)
-    2) brightness value (int)
-    3) speaker volume (int)
-    4) number of possible inputs (int)
-    5) number of user profiles (int)
+std::string LogicPro::createInstrumentTrack(LogicPro trackA)
+{
+    if ( trackA.numTracks < 1000 )
+    {
+        return "new track";
+    }
+    std::cout << "could not make a new track" << std::endl;
+    return "!";
+}
 
-3 things it can do:
-    1) increase monitor brightness
-    2) change profiles
-    3) switch to HDMI input
- */
+std::string LogicPro::insertPlugin(LogicPro trackA)
+{
+    if ( trackA.nameOfProject == "my project" )
+    {
+        return "FabFilter Pro-Q 3";
+    }
+    return "no plugin";
+}
+
+int LogicPro::recordPerformance(LogicPro trackB)
+{
+    if ( trackB.nameOfInputDevice == "SSL 2+")
+    {
+        return 0;
+    }
+    if ( trackB.nameOfInputDevice == "Focusrite Scarlett 2i2")
+    {
+        std::cout << "Wrong Input Device Selected" << std::endl;
+        return 1; 
+    }
+    if ( trackB.numTracks == 0 )
+    {
+        std::cout << "Please Create a New Track" << std::endl;
+        return 2;
+    }
+    std::cout << "Something Went Wrong... Please Try Again" << std::endl;
+    return 3;
+}
+
 
  struct ComputerMonitor
  {    
-    // number of default modes (int)
     int numDefaultModes = 8;
-    // brightness value (int)
     int brightnessValue = 50;
-    // speaker volume (int)
     int speakerVolume = 0;
-    // number of possible inputs (int)
     int numPossibleInputs = 3;
-    // number of user profiles (int)
     int numUserProfiles = 3;
 
-     // increase monitor brightness
     int increaseBrightness(ComputerMonitor myMonitor);
-    // change profiles
     std::string changeProfiles(ComputerMonitor myMonitor);
-    // switch to HDMI input
     bool toHDMIInput(ComputerMonitor myMonitor);
 };
 
-/*
- Thing 5) workbench
-5 properties:
-    1) number of tools (int)
-    2) name of tool brand (std::string)
-    3) height of workbench (float)
-    4) weight of hammer (float)
-    5) number of broken tools (int)
-3 things it can do:
-    1) open toolbox
-    2) repair an item
-    3) put away tools
- */
+int ComputerMonitor::increaseBrightness(ComputerMonitor myMonitor)
+{
+    while ( myMonitor.brightnessValue < 30 )
+    {
+        myMonitor.brightnessValue += 1;
+    }
+    return myMonitor.brightnessValue;
+}
+
+std::string ComputerMonitor::changeProfiles(ComputerMonitor myMonitor)
+{
+    if ( myMonitor.numUserProfiles == 2 )
+    {
+        return "Profile 2";
+    }
+    return "Profile 1";
+}
+
+bool ComputerMonitor::toHDMIInput(ComputerMonitor myMonitor)
+{
+    if ( myMonitor.numPossibleInputs >= 2)
+    {
+        return true;
+    }
+    std::cout << "no HDMI input available" << std::endl;
+    return false;
+}
 
 struct Workbench
 {    
-    // number of tools (int)
     int numTools = 15;
-    // name of tool brand (std::string)
     std::string toolBrand = "craftsman";
-    // height of workbench (float)
     float workbenchHeight = 36;
-    // weight of hammer (float)
     float hammerWeight = 1.5f;
-    // number of broken tools (int)
     int numBrokenTools = 0;    
 
-    // open toolbox
     bool openToolbox(Workbench myWorkbench);
-    // repair an item
     bool repairItem(Workbench myWorkbench);
-    // put away tools
     int putAwayTools(Workbench myWorkbench);
 };
 
-/*
-Thing 6) exercise equipment
-5 properties:
-    1) weight of dumbbell (float)
-    2) number of dumbbells (int)
-    3) value of equipment (float, dollars)
-    4) type of workout (std::string)
-    5) type of equipment (std::string)
-3 things it can do:
-    1) lift dumbbells
-    2) add weight to benchpress
-    3) move equipment
- */
+bool Workbench::openToolbox(Workbench myWorkbench)
+{
+    return myWorkbench.numTools > 0;
+}
+
+bool Workbench::repairItem(Workbench myWorkbench)
+{
+    return myWorkbench.numBrokenTools > 0;
+}
+
+int Workbench::putAwayTools(Workbench myWorkbench)
+{
+    return myWorkbench.numTools;
+}
+
+
 
 struct ExerciseEquipment
 {
-    // weight of dumbbell (float)
     float dumbbellWeight = 12.f;
-    // number of dumbbells (int)
     int numDumbbells = 4;
-    // value of equipment (float, dollars)
     float equipmentValue = 200.35f;
-    // type of workout (std::string)
     std::string workoutType = "endurance";
-    // type of equipment (std::string)
     std::string equipmentType = "benchpress";
 
-    // lift dumbbells
     int liftDumbbell(ExerciseEquipment dumbbell);
-    // add weight to benchpress
     float addWeight(ExerciseEquipment benchpress);
-    // move equipment
     bool moveEquipment(ExerciseEquipment equipment);
 };
 
+int ExerciseEquipment::liftDumbbell(ExerciseEquipment dumbbell)
+{
+    if ( dumbbell.numDumbbells > 1 )
+    {
+        return 2;
+    }
+    return 0;
+}
 
+float ExerciseEquipment::addWeight(ExerciseEquipment benchpress)
+{
+    if ( benchpress.workoutType == "strength training")
+    {
+        return 20.f;
+    }
+    return 0.f;
+}
 
-/*
-Thing 7) storage containers
-5 properties:
-    1) number of boxes (int)
-    2) weight of selected box (float)
-    3) category of box (std::string)
-    4) label on box (char)
-    5) weight of all boxes (float)
-3 things it can do:
-    1) label a box
-    2) pick up a box
-    3) fill a box
- */
+bool ExerciseEquipment::moveEquipment(ExerciseEquipment equipment)
+{
+    return equipment.equipmentType != "pullup bar";
+}
 
 struct StorageContainers
 {
-    // number of boxes (int)
     int numBoxes = 10;
-    // weight of selected box (float)
     float weightOfBox = 12.5f;
-    // category of box (std::string)
     std::string boxCategory = "books";
-    // label on box (char)
     char boxLabel = 'b';
-    // weight of all boxes (float)
     float allBoxesWeight = 115.23f;
-    
-    // label a box
+
     char labelBox(StorageContainers boxA);
-    // pick up a box
     std::string pickUpBox(StorageContainers boxD);
-    // fill a box
     int fillBox(StorageContainers emptyBoxA);
 };
 
-/*
-Thing 8) cars
-5 properties:
-    1) car type (std::string, electric or gas)
-    2) car brand (std::string)
-    3) number of wheels (int)
-    4) number of doors
-    5) owner of car (std::string, name)
-3 things it can do:
-    1) open car door
-    2) park car
-    3) drive car
- */
+char StorageContainers::labelBox(StorageContainers boxA)
+{   
+    if ( boxA.boxLabel != 'A')
+    {
+        boxA.boxLabel = 'A';
+    }
+    return boxA.boxLabel;
+}
+
+std::string StorageContainers::pickUpBox(StorageContainers boxD)
+{
+    return boxD.boxCategory;
+}
+
+int StorageContainers::fillBox(StorageContainers emptyBoxA)
+{
+    if ( emptyBoxA.weightOfBox < 1.f )
+    {
+        emptyBoxA.numBoxes += 1;
+        return emptyBoxA.numBoxes;
+    }
+    return 0;
+}
 
 struct Cars
 {
-    // car type (std::string, electric or gas)
     std::string carType = "gas";
-    // car brand (std::string)
     std::string carBrand = "Ford";
-    // number of wheels (int)
     int numWheels = 4;
-    // number of doors
     int numDoors = 4;
-    // owner of car (std::string, name)
     std::string ownerOfCar = "Jason";
 
-    // open car door
     void openCarDoor(Cars carA);
-    // park car
     bool parkCar(Cars carB);
-    // drive car
     bool driveCar(Cars carA);
 };
 
-/*
-Thing 9) shelves
-5 properties: 
-    1) name of object (std::string)
-    2) category of object (char)
-    3) number of shelves (int)
-    4) number of items on a specific shelf (int)
-    5) weight of items on a specific shelf (float)
-3 things it can do:
-    1) store object on shelf
-    2) sort items on shelf
-    3) grab an item off the shelf
- */
+void Cars::openCarDoor(Cars carA)
+{
+    if ( carA.ownerOfCar == "Me" )
+    {
+        std::cout << "My Car" << std::endl;
+    }
+
+    else
+    {
+        std::cout << "Not My Car... don't open"  << std::endl;
+    }
+
+}
+
+bool Cars::parkCar(Cars carB)
+{
+    return carB.numWheels > 1;
+}
+
+bool Cars::driveCar(Cars carA)
+{
+    return carA.ownerOfCar == "Me" || carA.ownerOfCar == "Jason";
+}
 
 struct Shelves
 {
-    // name of object (std::string)
     std::string objectName = "shovel";
-    // category of object (char)
     char objectCategory = 'w';
-    // number of shelves (int)
     int numShelves = 8;
-    // number of items on a specific shelf (int)
     int numItemsOnShelf = 5;
-    // weight of items on a specific shelf (float)
     float weightOfItemsOnShelf = 15.5f;
 
-     // store object on shelf
     bool storeObjectOnShelf(Shelves shelfA);
-    // sort items on shelf
     void sortShelfItems(std::string item, int numItems, bool alphabetical = true);
-    // grab an item off the shelf
     std::string grabItem(Shelves shelfB);
 };
 
+bool Shelves::storeObjectOnShelf(Shelves shelfA)
+{
+    return shelfA.numItemsOnShelf < 10;
+}
 
- /*
-Thing 10) Garage
-5 properties:
-    1) workbench
-    2) exercise equipment
-    3) storage containers
-    4) cars
-    5) shelves
-3 things it can do:
-    1) open garage door
-    2) use workbench
-    3) park car in garage
- */
+void Shelves::sortShelfItems(std::string item, int numItems, bool alphabetical)
+{
+    while ( alphabetical == false && numItems > 0 && item == "unsorted")
+    {
+        numItems -= 1;
+        item = "sorted";
+
+        if ( numItems == 0 )
+        {
+            alphabetical = true;
+        }
+    }
+}
+
+std::string Shelves::grabItem(Shelves shelfB)
+{
+    return shelfB.objectName;
+}
 
 struct Garage 
 {
@@ -504,6 +607,27 @@ struct Garage
     void useWorkbench(Workbench myWorkbench);
     bool parkCarInGarage(Cars myCar);
 };
+
+bool Garage::openGarageDoor(Garage myGarage)
+{
+    Garage myGarageOpened;
+    myGarage = myGarageOpened;
+    return true;
+}
+
+void Garage::useWorkbench(Workbench myWorkbench)
+{
+    if ( myWorkbench.numTools > 0 )
+    {
+        std::cout << "Using Workbench" << std::endl;
+    }
+}
+
+bool Garage::parkCarInGarage(Cars myCar)
+{
+    return myCar.carType == "Ford";
+}
+
 
 
 /*

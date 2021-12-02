@@ -145,7 +145,6 @@ void Person::run( int howFast, bool startWithLeftFoot)
         leftFoot.stepForward();
         rightFoot.stepForward();
     }
-
     else
     {
         rightFoot.stepForward();
@@ -199,21 +198,14 @@ void House::Kitchen::microwaveChicken( float microwaveTime)
 {
     float instructions = 45.f;
     microwaveTime = instructions;    
-    bool ready;
     
     if( microwaveTime >= 45.f )
     {
-        ready = true;
+        std::cout << "Ready!" << std::endl;
     }
-
     else
     {
-        ready = false;
-    }
-
-    if( ready == true )
-    {
-        std::cout << "Ready!" << std::endl;
+        std::cout << "Not Ready!" << std::endl;
     }
 }
 
@@ -245,17 +237,8 @@ float House::Kitchen::preheatOven(float ovenTemperature)
 }
 
 bool House::furnishHouse(House myHouse)
-{
-    
-    if( myHouse.numBeds == 0 )
-    {
-        return true; // furnish the house
-    }
-
-    else
-    {
-        return false; // don't furnish the house
-    }
+{   
+    return myHouse.numBeds == 0;
 }
 
 void House::openFrontDoor(std::string door)
@@ -264,7 +247,6 @@ void House::openFrontDoor(std::string door)
     {
         std::cout << "Need to open front door" << std::endl;
     }
-
     else
     {
         std::cout << "Not the front door" << std::endl;
@@ -273,16 +255,7 @@ void House::openFrontDoor(std::string door)
 
 bool House::closeWindow(House::Kitchen myKitchen)
 {
-    if ( myKitchen.numShelves > 1 )
-    {
-        return true; 
-    }
-
-    else
-    {
-        return false;
-    }
-
+    return myKitchen.numShelves > 1;
 }
 
 struct Xbox
@@ -310,17 +283,10 @@ struct Xbox
     void turnOnXbox(Xbox myXbox);
 };
 
+
 bool Xbox::Game::openGame(std::string gameName)
 {
-    if ( gameName == "Valid" )
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return gameName == "Valid";
 }
 
 bool Xbox::Game::completeAchievement(std::string achievementName, int numPoints)
@@ -330,12 +296,7 @@ bool Xbox::Game::completeAchievement(std::string achievementName, int numPoints)
         numPoints += 5;
         return true;
     }
-
-    else
-    {
-        numPoints += 0;
-        return false;
-    }
+    return false;
 }
 
 void Xbox::Game::changeMenu(char buttonPressed, std::string currentMenu)
@@ -349,30 +310,12 @@ void Xbox::Game::changeMenu(char buttonPressed, std::string currentMenu)
 
 bool Xbox::openGame(Xbox::Game skyrim)
 {
-    if ( skyrim.gameCategory == "RPG" )
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return skyrim.gameCategory == "RPG";
 }
 
 bool Xbox::downloadGame(Xbox::Game haloInfinite)
 {
-    Xbox myXbox;
-    
-    if ( myXbox.amountOfSpace >= haloInfinite.sizeOfGame )
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return Xbox::amountOfSpace >= haloInfinite.sizeOfGame;
 }
 
 void Xbox::turnOnXbox(Xbox myXbox)
@@ -400,12 +343,8 @@ std::string LogicPro::createInstrumentTrack(LogicPro trackA)
     {
         return "new track";
     }
-
-    else
-    {
-        std::cout << "could not make a new track" << std::endl;
-    }
-    return "";
+    std::cout << "could not make a new track" << std::endl;
+    return "!";
 }
 
 std::string LogicPro::insertPlugin(LogicPro trackA)
@@ -414,7 +353,6 @@ std::string LogicPro::insertPlugin(LogicPro trackA)
     {
         return "FabFilter Pro-Q 3";
     }
-
     return "no plugin";
 }
 
@@ -424,24 +362,18 @@ int LogicPro::recordPerformance(LogicPro trackB)
     {
         return 0;
     }
-
     if ( trackB.nameOfInputDevice == "Focusrite Scarlett 2i2")
     {
         std::cout << "Wrong Input Device Selected" << std::endl;
         return 1; 
     }
-
     if ( trackB.numTracks == 0 )
     {
         std::cout << "Please Create a New Track" << std::endl;
         return 2;
     }
-
-    else
-    {
-        std::cout << "Something Went Wrong... Please Try Again" << std::endl;
-        return 3;
-    }
+    std::cout << "Something Went Wrong... Please Try Again" << std::endl;
+    return 3;
 }
 
 
@@ -464,7 +396,6 @@ int ComputerMonitor::increaseBrightness(ComputerMonitor myMonitor)
     {
         myMonitor.brightnessValue += 1;
     }
-
     return myMonitor.brightnessValue;
 }
 
@@ -474,11 +405,7 @@ std::string ComputerMonitor::changeProfiles(ComputerMonitor myMonitor)
     {
         return "Profile 2";
     }
-
-    else
-    {
-        return "Profile 1";
-    }
+    return "Profile 1";
 }
 
 bool ComputerMonitor::toHDMIInput(ComputerMonitor myMonitor)
@@ -487,12 +414,8 @@ bool ComputerMonitor::toHDMIInput(ComputerMonitor myMonitor)
     {
         return true;
     }
-
-    else
-    {
-        std::cout << "no HDMI input available" << std::endl;
-        return false;
-    }
+    std::cout << "no HDMI input available" << std::endl;
+    return false;
 }
 
 struct Workbench
@@ -510,28 +433,12 @@ struct Workbench
 
 bool Workbench::openToolbox(Workbench myWorkbench)
 {
-    if ( myWorkbench.numTools > 0 )
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return myWorkbench.numTools > 0;
 }
 
 bool Workbench::repairItem(Workbench myWorkbench)
 {
-    if ( myWorkbench.numBrokenTools > 0 )
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return myWorkbench.numBrokenTools > 0;
 }
 
 int Workbench::putAwayTools(Workbench myWorkbench)
@@ -560,11 +467,7 @@ int ExerciseEquipment::liftDumbbell(ExerciseEquipment dumbbell)
     {
         return 2;
     }
-
-    else
-    {
-        return 0;
-    }
+    return 0;
 }
 
 float ExerciseEquipment::addWeight(ExerciseEquipment benchpress)
@@ -573,25 +476,12 @@ float ExerciseEquipment::addWeight(ExerciseEquipment benchpress)
     {
         return 20.f;
     }
-
-    else
-    {
-        return 0.f;
-    }
+    return 0.f;
 }
 
 bool ExerciseEquipment::moveEquipment(ExerciseEquipment equipment)
 {
-    if ( equipment.equipmentType != "pullup bar")
-    {
-        return true;
-    }
-    
-    else
-    {
-        return false;
-    }
-
+    return equipment.equipmentType != "pullup bar";
 }
 
 struct StorageContainers
@@ -628,11 +518,7 @@ int StorageContainers::fillBox(StorageContainers emptyBoxA)
         emptyBoxA.numBoxes += 1;
         return emptyBoxA.numBoxes;
     }
-
-    else
-    {
-        return 0;
-    }
+    return 0;
 }
 
 struct Cars
@@ -664,28 +550,12 @@ void Cars::openCarDoor(Cars carA)
 
 bool Cars::parkCar(Cars carB)
 {
-    if ( carB.numWheels > 1 )
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return carB.numWheels > 1;
 }
 
 bool Cars::driveCar(Cars carA)
 {
-    if ( carA.ownerOfCar == "Me" || carA.ownerOfCar == "Jason")
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return carA.ownerOfCar == "Me" || carA.ownerOfCar == "Jason";
 }
 
 struct Shelves
@@ -703,15 +573,7 @@ struct Shelves
 
 bool Shelves::storeObjectOnShelf(Shelves shelfA)
 {
-    if ( shelfA.numItemsOnShelf < 10 )
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return shelfA.numItemsOnShelf < 10;
 }
 
 void Shelves::sortShelfItems(std::string item, int numItems, bool alphabetical)
@@ -763,15 +625,7 @@ void Garage::useWorkbench(Workbench myWorkbench)
 
 bool Garage::parkCarInGarage(Cars myCar)
 {
-    if ( myCar.carType == "Ford" )
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
+    return myCar.carType == "Ford";
 }
 
 

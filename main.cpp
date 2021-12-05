@@ -42,20 +42,20 @@ int main()
  struct House 
  {
     House();
-    int numRooms = 6;
-    int numWindows = 12;
-    std::string ownerName = "James";
-    int numDoors = 6;
-    int numBeds = 2;
+    int numRooms;
+    int numWindows;
+    std::string ownerName;
+    int numDoors;
+    int numBeds;
 
     struct Kitchen 
     {
+        int numKnives;
+        int numPlates;
+        std::string toasterBrand;
+        int numFridgeDoors;
+        int numShelves;
         Kitchen();
-        int numKnives = 5;
-        int numPlates = 8;
-        std::string toasterBrand = "GE";
-        int numFridgeDoors = 1;
-        int numShelves = 4;
 
         void microwaveChicken(float microwaveTime = 60.f);  
         bool madeSalad(std::string lettuceBrand, bool includeTomatoes = true, std::string dressing = "Italian");
@@ -66,15 +66,14 @@ int main()
     bool closeWindow(House::Kitchen myKitchen);
 };
 
-House::House()
+House::House() : numRooms(4), numWindows(10), ownerName("Viktor"), numDoors(5), numBeds(2)
 {
     std::cout << "House Constructed" << std::endl;
     std::cout << std::endl;
 }
 
-House::Kitchen::Kitchen()
+House::Kitchen::Kitchen() : numKnives(10), numPlates(5), toasterBrand("GE"), numFridgeDoors(2), numShelves(4)
 {
-    numKnives = 10;
     std::cout << "Kitchen Constructed" << std::endl;
     std::cout << std::endl;
 }
@@ -84,6 +83,11 @@ void House::Kitchen::microwaveChicken( float microwaveTime)
     if( microwaveTime >= 45.f )
     {
         std::cout << "Cooked for " << microwaveTime << " seconds:" << " Chicken cooked!" << std::endl;
+
+        if( numPlates > 0 )
+        {
+            std::cout << "Put chicken on plate" << std::endl;
+        }
     }
     else
     {
@@ -114,7 +118,12 @@ float House::Kitchen::preheatOven(float ovenTemperature)
 
 bool House::furnishHouse(House myHouse)
 {   
-    return myHouse.numBeds == 0;
+    if( myHouse.numBeds == 0 )
+    {
+        return true;
+    }
+    std::cout << "No need to buy more beds, I already have " << myHouse.numBeds << std::endl;
+    return false;
 }
 
 void House::openFrontDoor(std::string door)
@@ -136,12 +145,24 @@ bool House::closeWindow(House::Kitchen myKitchen)
 
 struct Xbox
 {
-    Xbox();
-    float amountOfSpace = 500.f;
-    int numGamesDownloaded = 10;
-    int numControllers = 1;
-    std::string profileName = "Profile1";
-    int numFriendsOnline = 8;
+    float amountOfSpace;
+    int numGamesDownloaded;
+    int numControllers;
+    std::string profileName;
+    int numFriendsOnline;
+
+    Xbox() : amountOfSpace(500.f), numGamesDownloaded(10), numControllers(2), profileName("Profile2"), numFriendsOnline(10) 
+    {
+        std::cout << "Xbox Constructed" << std::endl; 
+        std::cout << std::endl; 
+        std::cout << "Xbox info: " << std::endl;
+        std::cout << std::endl; 
+        std::cout << "Space: " << amountOfSpace << std::endl; 
+        std::cout << "Number of games downloaded: " << numGamesDownloaded << std::endl;
+        std::cout << "Number of controllers owned: " << numControllers << std::endl;       
+        std::cout << "Current profile: " << profileName << std::endl;
+        std::cout << std::endl;
+    }
 
     struct Game
     {
@@ -160,13 +181,6 @@ struct Xbox
     bool downloadGame(Xbox::Game haloInfinite);
     void turnOnXbox(Xbox myXbox);
 };
-
-Xbox::Xbox()
-{
-    std::cout << "Xbox Constructed" << std::endl;
-    amountOfSpace = 1000.f;
-    std::cout << std::endl;
-}
 
 Xbox::Game::Game()
 {
@@ -236,22 +250,28 @@ void Xbox::turnOnXbox(Xbox myXbox)
 struct LogicPro
 {
     LogicPro();
-    float sampleRate = 48000.f;
-    std::string nameOfInputDevice = "SSL 2+";
-    std::string nameOfProject = "my project";
-    int numTracks = 12;
-    double tempo = 99.9;
+    float sampleRate;
+    std::string nameOfInputDevice;
+    std::string nameOfProject;
+    int numTracks;
+    double tempo;
 
     std::string createInstrumentTrack(LogicPro trackA);
     std::string insertPlugin(LogicPro trackA);
     int recordPerformance(LogicPro trackB);
 };
 
-LogicPro::LogicPro()
+LogicPro::LogicPro() : sampleRate(44100.f), nameOfInputDevice("Scarlett 2i4"), nameOfProject("My Song"), numTracks(25), tempo(135)
 {
-    nameOfProject = "Project 1";
     std::cout << "LogicPro Constructed" << std::endl;
     std::cout << std::endl;
+
+    std::cout << "Number of tracks in session: " << numTracks << 
+    std::endl;
+
+    std::cout << "Session tempo: " << tempo << " BPM" <<
+    std::endl;
+
 }
 
 std::string LogicPro::createInstrumentTrack(LogicPro trackA)
@@ -299,24 +319,23 @@ int LogicPro::recordPerformance(LogicPro trackB)
 
  struct ComputerMonitor
  {    
-    ComputerMonitor();
-    int numDefaultModes = 8;
-    int brightnessValue = 50;
-    int speakerVolume = 0;
-    int numPossibleInputs = 3;
-    int numUserProfiles = 3;
+    int numDefaultModes;
+    int brightnessValue;
+    int speakerVolume;
+    int numPossibleInputs;
+    int numUserProfiles;
+
+    ComputerMonitor() : numDefaultModes(10), brightnessValue(30), speakerVolume(20), numPossibleInputs(2), numUserProfiles(5) 
+    {
+        std::cout << "ComputerMonitor Constructed" << std::endl;
+        std::cout << std::endl;
+
+    }
 
     int increaseBrightness(ComputerMonitor myMonitor);
     std::string changeProfiles(ComputerMonitor myMonitor);
     bool toHDMIInput(ComputerMonitor myMonitor);
 };
-
-ComputerMonitor::ComputerMonitor()
-{
-    brightnessValue = 30;
-    std::cout << "ComputerMonitor Constructed" << std::endl;
-    std::cout << std::endl;
-}
 
 int ComputerMonitor::increaseBrightness(ComputerMonitor myMonitor)
 {
@@ -329,7 +348,9 @@ int ComputerMonitor::increaseBrightness(ComputerMonitor myMonitor)
 
 std::string ComputerMonitor::changeProfiles(ComputerMonitor myMonitor)
 {
-    if ( myMonitor.numUserProfiles == 2 )
+    std::cout << "Number of profiles: " << numUserProfiles << std::endl;
+    
+    if ( myMonitor.numUserProfiles >= 2 )
     {
         std::cout << "Switched to 'Profile 2'" << std::endl;
         return "Profile 2";

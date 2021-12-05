@@ -130,11 +130,8 @@ bool House::Kitchen::madeSalad(std::string lettuceBrand, bool includeTomatoes, s
         std::cout << "Made salad!" << std::endl;
         return true;
     }
-    else
-    {
-        std::cout << "Didn't make salad" << std::endl;
-        return false;
-    }
+    std::cout << "Didn't make salad" << std::endl;
+    return false;
 }
 
 float House::Kitchen::preheatOven(float ovenTemperature)
@@ -144,10 +141,7 @@ float House::Kitchen::preheatOven(float ovenTemperature)
         std::cout << "Oven preheated to: " << ovenTemperature << std::endl;
         return ovenTemperature;
     }
-    else
-    {
-        return 0.f;
-    }
+    return 0.f;
 }
 
 bool House::furnishHouse(House myHouse)
@@ -225,12 +219,8 @@ bool Xbox::Game::completeAchievement(std::string achievementName, int numPoints)
         numPoints += 5;
         return true;
     }
-    else
-    {
-        std::cout << "No achievements!" << std::endl;
-        return false;
-    }
-
+    std::cout << "No achievements!" << std::endl;
+    return false;
 }
 
 void Xbox::Game::changeMenu(char buttonPressed, std::string currentMenu)
@@ -314,11 +304,8 @@ std::string LogicPro::insertPlugin(LogicPro trackA)
         std::cout << "Plugin inserted!" << std::endl;
         return "FabFilter Pro-Q 3";
     }
-    else
-    {
-        std::cout << "Plugin could not be inserted!" << std::endl;
-        return "no plugin";
-    }
+    std::cout << "Plugin could not be inserted!" << std::endl;
+    return "no plugin";
 }
 
 int LogicPro::recordPerformance(LogicPro trackB)

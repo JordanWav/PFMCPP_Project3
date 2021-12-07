@@ -90,10 +90,12 @@ int main()
         void microwaveChicken(float microwaveTime = 60.f);  
         bool madeSalad(std::string lettuceBrand, bool includeTomatoes = true, std::string dressing = "Italian");
         float preheatOven(float ovenTemperature);
+        bool tableSet(int numPlacesToSet, int placesSet);
     };
     bool furnishHouse(House myHouse);
     void openFrontDoor(std::string door = "front door");
     bool closeWindow(House::Kitchen myKitchen);
+    void openWindows(int openedWindows);
 };
 
 House::House() : numRooms(4), numWindows(10), ownerName("Viktor"), numDoors(5), numBeds(2)
@@ -102,7 +104,7 @@ House::House() : numRooms(4), numWindows(10), ownerName("Viktor"), numDoors(5), 
     std::cout << std::endl;
 }
 
-House::Kitchen::Kitchen() : numKnives(10), numPlates(5), toasterBrand("GE"), numFridgeDoors(2), numShelves(4)
+House::Kitchen::Kitchen() : numKnives(10), numPlates(10), toasterBrand("GE"), numFridgeDoors(2), numShelves(4)
 {
     std::cout << "Kitchen Constructed" << std::endl;
     std::cout << std::endl;
@@ -146,6 +148,25 @@ float House::Kitchen::preheatOven(float ovenTemperature)
     return 0.f;
 }
 
+bool House::Kitchen::tableSet(int numPlacesToSet, int placesSet)
+{
+    if( numPlates < numPlacesToSet )
+    {
+        std::cout << "Not enough plates, need " << numPlacesToSet - numPlates << " more plates to set the table!" << std::endl; 
+        return false;
+    }     
+    for( int i = 0; i < numPlacesToSet; ++i )
+    {
+        ++placesSet;
+        if( placesSet == numPlacesToSet )
+        {
+            std::cout << "Table set!" << std::endl;
+            return true;
+        }
+    }
+    return false; 
+}
+
 bool House::furnishHouse(House myHouse)
 {   
     if( myHouse.numBeds == 0 )
@@ -168,6 +189,27 @@ void House::openFrontDoor(std::string door)
     }
 }
 
+void House::openWindows(int openedWindows)
+{
+    std::cout << std::endl;
+    std::cout << "Opening windows" << std::endl;
+    std::cout << "Windows opened: ";
+    for( int i = 1; i <= numWindows; ++i )
+    {
+        openedWindows = i;
+        std::cout << openedWindows;
+        if( openedWindows != numWindows)
+        {
+            std::cout << ", ";
+        }
+        if( openedWindows == numWindows )
+        {
+            std::cout << std::endl;
+            std::cout << "All " << numWindows << " windows have been opened" << std::endl;
+        }    
+    }
+}
+
 bool House::closeWindow(House::Kitchen myKitchen)
 {
     return myKitchen.numShelves > 1;
@@ -181,7 +223,7 @@ struct Xbox
     std::string profileName;
     int numFriendsOnline;
 
-    Xbox() : amountOfSpace(500.f), numGamesDownloaded(10), numControllers(2), profileName("Profile2"), numFriendsOnline(10) 
+    Xbox() : amountOfSpace(500.f), numGamesDownloaded(10), numControllers(2), profileName("Profile2"), numFriendsOnline(10)
     {
         std::cout << "Xbox Constructed" << std::endl; 
         std::cout << std::endl; 
@@ -206,10 +248,12 @@ struct Xbox
         bool isGame(std::string gameName);
         bool completeAchievement(std::string achievementName, int numPoints = 5);
         void changeMenu(char buttonPressed = 'b', std::string currentMenu = "Main menu");
+        int totalAchievementPoints(int achievementsGained, int achievementPoints);
     };
     bool openGame(Xbox::Game skyrim);
     bool downloadGame(Xbox::Game haloInfinite);
     void turnOnXbox(Xbox myXbox);
+    int deleteAllGames(int gamesDeleted);
 };
 
 Xbox::Game::Game()
@@ -250,6 +294,17 @@ void Xbox::Game::changeMenu(char buttonPressed, std::string currentMenu)
 
 }
 
+int Xbox::Game::totalAchievementPoints(int achievementsGained, int achievementPoints)
+{    
+    int currentTotal = numCompletedAchievements * achievementPoints;
+    for( int i = 0; i < achievementsGained; ++i )
+    {
+        currentTotal += achievementPoints;
+        std::cout << "New achievement points total: " << currentTotal << std::endl;
+    }
+    return currentTotal;
+}
+
 bool Xbox::openGame(Xbox::Game skyrim)
 {
     if( skyrim.gameCategory == "RPG" )
@@ -276,6 +331,18 @@ void Xbox::turnOnXbox(Xbox myXbox)
     myXbox.profileName = "My Profile";   
 }
 
+int Xbox::deleteAllGames(int gamesDeleted)
+{
+    gamesDeleted = 0;
+    while( gamesDeleted < numGamesDownloaded )
+    {
+        ++gamesDeleted;
+        --numGamesDownloaded;
+        amountOfSpace += 30.f;
+        std::cout << "Games deleted: " << gamesDeleted << " New total space = " << amountOfSpace << std::endl;
+    }
+    return numGamesDownloaded;
+}
 
 struct LogicPro
 {
@@ -289,6 +356,7 @@ struct LogicPro
     std::string createInstrumentTrack(LogicPro trackA);
     std::string insertPlugin(LogicPro trackA);
     int recordPerformance(LogicPro trackB);
+    int addTracks(int numTracksNeeded);
 };
 
 LogicPro::LogicPro() : sampleRate(44100.f), nameOfInputDevice("Scarlett 2i4"), nameOfProject("My Song"), numTracks(25), tempo(135)
@@ -347,6 +415,17 @@ int LogicPro::recordPerformance(LogicPro trackB)
     return 3;
 }
 
+int LogicPro::addTracks(int numTracksNeeded)
+{
+    for( int i = 1; i <= numTracksNeeded; ++i )
+    {
+        ++numTracks;
+        std::cout << "Track " << numTracks << " created" << std::endl;
+    }
+    std::cout << "New total number of tracks: " << numTracks << std::endl;
+    return numTracks;
+}
+
  struct ComputerMonitor
  {    
     int numDefaultModes;
@@ -359,19 +438,19 @@ int LogicPro::recordPerformance(LogicPro trackB)
     {
         std::cout << "ComputerMonitor Constructed" << std::endl;
         std::cout << std::endl;
-
     }
 
     int increaseBrightness(ComputerMonitor myMonitor);
     std::string changeProfiles(ComputerMonitor myMonitor);
     bool toHDMIInput(ComputerMonitor myMonitor);
+    void cycleThroughInputs(int currentInput);
 };
 
 int ComputerMonitor::increaseBrightness(ComputerMonitor myMonitor)
 {
     while ( myMonitor.brightnessValue < 30 )
     {
-        myMonitor.brightnessValue += 1;
+        ++myMonitor.brightnessValue;
     }
     return myMonitor.brightnessValue;
 }
@@ -400,6 +479,19 @@ bool ComputerMonitor::toHDMIInput(ComputerMonitor myMonitor)
     return false;
 }
 
+void ComputerMonitor::cycleThroughInputs(int currentInput)
+{
+    for( int i = 0; i < numPossibleInputs; ++i )
+    {
+        ++currentInput;
+        if( currentInput > numPossibleInputs )
+        {
+            currentInput = 1;
+        }
+        std::cout << "Now on input: " << currentInput << std::endl;
+    }
+}
+
 struct Workbench
 {    
     Workbench();
@@ -412,6 +504,7 @@ struct Workbench
     bool openToolbox(Workbench myWorkbench);
     bool repairItem(Workbench myWorkbench);
     int putAwayTools(Workbench myWorkbench);
+    int addingTools(int numToolsBought);
 };
 
 Workbench::Workbench()
@@ -442,6 +535,17 @@ int Workbench::putAwayTools(Workbench myWorkbench)
     return myWorkbench.numTools;
 }
 
+int Workbench::addingTools(int numToolsBought)
+{
+    for( int i = 0; i < numToolsBought; ++i )
+    {
+        ++numTools;
+        std::cout << "Bought a new tool" << std::endl;
+    }
+    std::cout << "New number of tools: " << numTools << std::endl;
+    return numTools;
+}
+
 struct ExerciseEquipment
 {
     ExerciseEquipment();
@@ -454,6 +558,7 @@ struct ExerciseEquipment
     int liftDumbbell(ExerciseEquipment dumbbell);
     float addWeight(ExerciseEquipment benchpress);
     bool moveEquipment(ExerciseEquipment equipment);
+    void repsCounter(int numReps);
 };
 
 ExerciseEquipment::ExerciseEquipment()
@@ -488,6 +593,15 @@ bool ExerciseEquipment::moveEquipment(ExerciseEquipment equipment)
     return equipment.equipmentType != "pullup bar";
 }
 
+void ExerciseEquipment::repsCounter(int numReps)
+{
+    for( int i = 1; i <= numReps; ++i )
+    {
+        std::cout << i << "!" << std::endl;
+    }
+    std::cout << "Completed reps" << std::endl;
+}
+
 struct StorageContainers
 {
     StorageContainers();
@@ -500,6 +614,7 @@ struct StorageContainers
     char labelBox(StorageContainers boxA);
     std::string pickUpBox(StorageContainers boxD);
     int fillBox(StorageContainers emptyBoxA);
+    int addBoxes(int numBoxesToAdd);
 };
 
 StorageContainers::StorageContainers()
@@ -527,11 +642,22 @@ int StorageContainers::fillBox(StorageContainers emptyBoxA)
 {
     if ( emptyBoxA.weightOfBox < 1.f )
     {
-        emptyBoxA.numBoxes += 1;
+        ++emptyBoxA.numBoxes;
         return emptyBoxA.numBoxes;
     }
     std::cout << "Boxes filled!" << std::endl;
     return 0;
+}
+
+int StorageContainers::addBoxes(int numBoxesToAdd)
+{
+    for( int i = 0; i < numBoxesToAdd; ++i )
+    {
+        std::cout << "Box added" << std::endl;
+        ++numBoxes;
+    }
+    std::cout << "New total number of boxes: " << numBoxes << std::endl;
+    return numBoxes;
 }
 
 struct Cars
@@ -546,6 +672,7 @@ struct Cars
     void openCarDoor(Cars carA);
     bool parkCar(Cars carB);
     bool driveCar(Cars carA);
+    void driveToStore(int distanceToStore);
 };
 
 Cars::Cars()
@@ -586,6 +713,24 @@ bool Cars::driveCar(Cars carA)
     return carA.ownerOfCar == "Me" || carA.ownerOfCar == "Jason";
 }
 
+void Cars::driveToStore(int distanceToStore)
+{
+    int newDistance;
+    for( int i = 0; i < distanceToStore; ++i )
+    {
+        newDistance = distanceToStore - i;
+        if( newDistance == 1 )
+        {
+            std::cout << newDistance << " mile away" << std::endl;
+        }       
+        else
+        {
+            std::cout << newDistance << " miles away" << std::endl;
+        }
+    }
+    std::cout << "Arrived at store!" << std::endl;
+}
+
 struct Shelves
 {
     Shelves();
@@ -598,6 +743,7 @@ struct Shelves
     bool storeObjectOnShelf(Shelves shelfA);
     void sortShelfItems(std::string item, int numItems, bool alphabetical = true);
     std::string grabItem(Shelves shelfB);
+    bool clearedShelf();
 };
 
 Shelves::Shelves()
@@ -620,7 +766,7 @@ void Shelves::sortShelfItems(std::string item, int numItems, bool alphabetical)
 {
     while ( alphabetical == false && numItems > 0 && item == "unsorted")
     {
-        numItems -= 1;
+        --numItems;
         item = "sorted";
 
         if ( numItems == 0 )
@@ -636,6 +782,31 @@ std::string Shelves::grabItem(Shelves shelfB)
     return shelfB.objectName;
 }
 
+bool Shelves::clearedShelf()
+{
+    if( numItemsOnShelf == 0 )
+    {
+        std::cout << "Shelf already empty!" << std::endl;
+        return false;
+    }
+
+    int newTotal = numItemsOnShelf;
+    for( int i = 0; i < numItemsOnShelf; ++i )
+    {
+        --newTotal;
+        if( newTotal + 1 == 1 )
+        {
+            std::cout << newTotal + 1 << " item left on shelf" << std::endl;
+        }
+        else
+        {
+            std::cout << newTotal + 1 << " items left on shelf" << std::endl;
+        }
+    }
+    std::cout << "Shelf cleared!" << std::endl;
+    return true;
+}
+
 struct Garage 
 {
     Garage();
@@ -648,6 +819,7 @@ struct Garage
     bool openGarageDoor(Garage myGarage);
     void useWorkbench(Workbench myWorkbench);
     bool parkCarInGarage(Cars myCar);
+    void moveOldBoxes(int numOldBoxes);
 };
 
 Garage::Garage()
@@ -675,6 +847,22 @@ void Garage::useWorkbench(Workbench myWorkbench)
 bool Garage::parkCarInGarage(Cars myCar)
 {
     return myCar.carType == "Ford";
+}
+
+void Garage::moveOldBoxes(int numOldBoxes)
+{
+    for( int i = 1; i <= numOldBoxes; ++i )
+    {
+        if( i == 1 )
+        {
+            std::cout << i << " old box moved" << std::endl;
+        }
+        else
+        {
+            std::cout << i << " old boxes moved" << std::endl;
+        }
+    }
+    std::cout << "All old boxes moved!" << std::endl;
 }
 
 /*
@@ -706,6 +894,7 @@ int main()
     home.furnishHouse(home);
     home.openFrontDoor("front door");
     home.closeWindow(homeKitchen);
+    home.openWindows(0);
 
     std::cout << "----------------------------------" << std::endl;
     
@@ -718,6 +907,8 @@ int main()
     kitchenA.madeSalad("Great Lettuce", false, "French");
     kitchenA.preheatOven(450.f);
 
+    kitchenA.tableSet(7, 0);
+
     std::cout << std::endl;
 
     std::cout << "Kitchen B:" << std::endl;
@@ -729,6 +920,9 @@ int main()
     kitchenB.microwaveChicken(10.f);
     kitchenB.madeSalad("Lettuce!", true, "Italian");
     kitchenB.preheatOven(400.f);
+
+    kitchenB.numPlates = 2;
+    kitchenB.tableSet(5, 0);
     
     std::cout << "----------------------------------" << std::endl;
 
@@ -740,6 +934,7 @@ int main()
     myXbox.openGame(oblivion);
     myXbox.downloadGame(oblivion);
     myXbox.turnOnXbox(myXbox);
+    myXbox.deleteAllGames(0);
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -748,6 +943,9 @@ int main()
     morrowind.completeAchievement("none", 0);
     morrowind.changeMenu('a', "Start menu");
 
+    Xbox::Game skyrim;
+    skyrim.numCompletedAchievements = 10;
+    skyrim.totalAchievementPoints(5, 10);
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -758,6 +956,7 @@ int main()
     sessionA.createInstrumentTrack(sessionA);
     sessionA.insertPlugin(sessionA);
     sessionA.recordPerformance(sessionA);
+    sessionA.addTracks(15);
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -765,9 +964,11 @@ int main()
 
     std::cout << "How bright is my monitor? " << mainMonitor.brightnessValue << std::endl;
 
+    mainMonitor.numPossibleInputs = 6;
     mainMonitor.increaseBrightness(mainMonitor);
     mainMonitor.changeProfiles(mainMonitor);
     mainMonitor.toHDMIInput(mainMonitor);
+    mainMonitor.cycleThroughInputs(2);
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -775,6 +976,7 @@ int main()
     myWorkbench.openToolbox(myWorkbench);
     myWorkbench.repairItem(myWorkbench);
     myWorkbench.putAwayTools(myWorkbench);
+    myWorkbench.addingTools(3);
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -782,6 +984,7 @@ int main()
     myEquipment.liftDumbbell(myEquipment);
     myEquipment.addWeight(myEquipment);
     myEquipment.moveEquipment(myEquipment);
+    myEquipment.repsCounter(10);
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -789,6 +992,7 @@ int main()
     containerA.labelBox(containerA);
     containerA.pickUpBox(containerA);
     containerA.fillBox(containerA);
+    containerA.addBoxes(7);
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -799,6 +1003,7 @@ int main()
     carA.openCarDoor(carA);
     carA.parkCar(carA);
     carA.driveCar(carA);
+    carA.driveToStore(9);
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -809,6 +1014,7 @@ int main()
     topShelf.storeObjectOnShelf(topShelf);
     topShelf.sortShelfItems("trophy", 3, false);
     topShelf.grabItem(topShelf);
+    topShelf.clearedShelf();
 
     std::cout << "----------------------------------" << std::endl;
 
@@ -816,6 +1022,7 @@ int main()
     garageA.openGarageDoor(garageA);
     garageA.useWorkbench(myWorkbench);
     garageA.parkCarInGarage(carA);
+    garageA.moveOldBoxes(4);
    
     std::cout << std::endl;
     std::cout << "good to go!" << std::endl;

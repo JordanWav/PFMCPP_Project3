@@ -157,7 +157,7 @@ bool House::Kitchen::tableSet(int numPlacesToSet, int placesSet)
     }     
     for( int i = 0; i < numPlacesToSet; ++i )
     {
-        placesSet += 1;
+        ++placesSet;
         if( placesSet == numPlacesToSet )
         {
             std::cout << "Table set!" << std::endl;
@@ -419,7 +419,7 @@ int LogicPro::addTracks(int numTracksNeeded)
 {
     for( int i = 1; i <= numTracksNeeded; ++i )
     {
-        numTracks += 1;
+        ++numTracks;
         std::cout << "Track " << numTracks << " created" << std::endl;
     }
     std::cout << "New total number of tracks: " << numTracks << std::endl;
@@ -450,7 +450,7 @@ int ComputerMonitor::increaseBrightness(ComputerMonitor myMonitor)
 {
     while ( myMonitor.brightnessValue < 30 )
     {
-        myMonitor.brightnessValue += 1;
+        ++myMonitor.brightnessValue;
     }
     return myMonitor.brightnessValue;
 }
@@ -483,7 +483,7 @@ void ComputerMonitor::cycleThroughInputs(int currentInput)
 {
     for( int i = 0; i < numPossibleInputs; ++i )
     {
-        currentInput += 1;
+        ++currentInput;
         if( currentInput > numPossibleInputs )
         {
             currentInput = 1;
@@ -539,7 +539,7 @@ int Workbench::addingTools(int numToolsBought)
 {
     for( int i = 0; i < numToolsBought; ++i )
     {
-        numTools += 1;
+        ++numTools;
         std::cout << "Bought a new tool" << std::endl;
     }
     std::cout << "New number of tools: " << numTools << std::endl;
@@ -642,7 +642,7 @@ int StorageContainers::fillBox(StorageContainers emptyBoxA)
 {
     if ( emptyBoxA.weightOfBox < 1.f )
     {
-        emptyBoxA.numBoxes += 1;
+        ++emptyBoxA.numBoxes;
         return emptyBoxA.numBoxes;
     }
     std::cout << "Boxes filled!" << std::endl;
@@ -654,7 +654,7 @@ int StorageContainers::addBoxes(int numBoxesToAdd)
     for( int i = 0; i < numBoxesToAdd; ++i )
     {
         std::cout << "Box added" << std::endl;
-        numBoxes += 1;
+        ++numBoxes;
     }
     std::cout << "New total number of boxes: " << numBoxes << std::endl;
     return numBoxes;
@@ -766,7 +766,7 @@ void Shelves::sortShelfItems(std::string item, int numItems, bool alphabetical)
 {
     while ( alphabetical == false && numItems > 0 && item == "unsorted")
     {
-        numItems -= 1;
+        --numItems;
         item = "sorted";
 
         if ( numItems == 0 )
@@ -793,7 +793,7 @@ bool Shelves::clearedShelf()
     int newTotal = numItemsOnShelf;
     for( int i = 0; i < numItemsOnShelf; ++i )
     {
-        newTotal -= 1;
+        --newTotal;
         if( newTotal + 1 == 1 )
         {
             std::cout << newTotal + 1 << " item left on shelf" << std::endl;

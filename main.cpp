@@ -155,7 +155,7 @@ bool House::Kitchen::tableSet(int numPlacesToSet, int placesSet)
         std::cout << "Not enough plates, need " << numPlacesToSet - numPlates << " more plates to set the table!" << std::endl; 
         return false;
     }     
-    for( int i = 0; i < numPlacesToSet; i++)
+    for( int i = 0; i < numPlacesToSet; ++i )
     {
         placesSet += 1;
         if( placesSet == numPlacesToSet )
@@ -194,7 +194,7 @@ void House::openWindows(int openedWindows)
     std::cout << std::endl;
     std::cout << "Opening windows" << std::endl;
     std::cout << "Windows opened: ";
-    for( int i = 1; i <= numWindows; i++ )
+    for( int i = 1; i <= numWindows; ++i )
     {
         openedWindows = i;
         std::cout << openedWindows;
@@ -297,7 +297,7 @@ void Xbox::Game::changeMenu(char buttonPressed, std::string currentMenu)
 int Xbox::Game::totalAchievementPoints(int achievementsGained, int achievementPoints)
 {    
     int currentTotal = numCompletedAchievements * achievementPoints;
-    for( int i = 0; i < achievementsGained; i++ )
+    for( int i = 0; i < achievementsGained; ++i )
     {
         currentTotal += achievementPoints;
         std::cout << "New achievement points total: " << currentTotal << std::endl;
@@ -336,8 +336,8 @@ int Xbox::deleteAllGames(int gamesDeleted)
     gamesDeleted = 0;
     while( gamesDeleted < numGamesDownloaded )
     {
-        gamesDeleted++;
-        numGamesDownloaded--;
+        ++gamesDeleted;
+        --numGamesDownloaded;
         amountOfSpace += 30.f;
         std::cout << "Games deleted: " << gamesDeleted << " New total space = " << amountOfSpace << std::endl;
     }
@@ -417,7 +417,7 @@ int LogicPro::recordPerformance(LogicPro trackB)
 
 int LogicPro::addTracks(int numTracksNeeded)
 {
-    for( int i = 1; i <= numTracksNeeded; i++ )
+    for( int i = 1; i <= numTracksNeeded; ++i )
     {
         numTracks += 1;
         std::cout << "Track " << numTracks << " created" << std::endl;
@@ -481,7 +481,7 @@ bool ComputerMonitor::toHDMIInput(ComputerMonitor myMonitor)
 
 void ComputerMonitor::cycleThroughInputs(int currentInput)
 {
-    for( int i = 0; i < numPossibleInputs; i++ )
+    for( int i = 0; i < numPossibleInputs; ++i )
     {
         currentInput += 1;
         if( currentInput > numPossibleInputs )
@@ -537,7 +537,7 @@ int Workbench::putAwayTools(Workbench myWorkbench)
 
 int Workbench::addingTools(int numToolsBought)
 {
-    for( int i = 0; i < numToolsBought; i++ )
+    for( int i = 0; i < numToolsBought; ++i )
     {
         numTools += 1;
         std::cout << "Bought a new tool" << std::endl;
@@ -595,7 +595,7 @@ bool ExerciseEquipment::moveEquipment(ExerciseEquipment equipment)
 
 void ExerciseEquipment::repsCounter(int numReps)
 {
-    for( int i = 1; i <= numReps; i++ )
+    for( int i = 1; i <= numReps; ++i )
     {
         std::cout << i << "!" << std::endl;
     }
@@ -651,7 +651,7 @@ int StorageContainers::fillBox(StorageContainers emptyBoxA)
 
 int StorageContainers::addBoxes(int numBoxesToAdd)
 {
-    for( int i = 0; i < numBoxesToAdd; i++ )
+    for( int i = 0; i < numBoxesToAdd; ++i )
     {
         std::cout << "Box added" << std::endl;
         numBoxes += 1;
@@ -716,7 +716,7 @@ bool Cars::driveCar(Cars carA)
 void Cars::driveToStore(int distanceToStore)
 {
     int newDistance;
-    for( int i = 0; i < distanceToStore; i++ )
+    for( int i = 0; i < distanceToStore; ++i )
     {
         newDistance = distanceToStore - i;
         if( newDistance == 1 )
@@ -791,10 +791,10 @@ bool Shelves::clearedShelf()
     }
 
     int newTotal = numItemsOnShelf;
-    for( int i = 0; i < numItemsOnShelf; i++ )
+    for( int i = 0; i < numItemsOnShelf; ++i )
     {
         newTotal -= 1;
-        if( newTotal + 1 == 1)
+        if( newTotal + 1 == 1 )
         {
             std::cout << newTotal + 1 << " item left on shelf" << std::endl;
         }
@@ -851,7 +851,7 @@ bool Garage::parkCarInGarage(Cars myCar)
 
 void Garage::moveOldBoxes(int numOldBoxes)
 {
-    for( int i = 1; i <= numOldBoxes; i++ )
+    for( int i = 1; i <= numOldBoxes; ++i )
     {
         if( i == 1 )
         {
